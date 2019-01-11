@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./stylesheets/style.css">
+
+    <title>Database Design Homework 3DB Design HW3</title>
+  </head>
+  <body onload="onloadBody()">
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <nav class="navbar navbar-dark bg-dark">
+      <h2 class="navbar-brand" href="#">Database Design Homework #3</h2>
+      <small>By Audrey Becker, Joseph Kollin, and Dane Isburgh</small>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-6 ml-auto mr-auto">
+          <select id="form-select" class="custom-select" onchange="onchangeFormSelect()">
+            <option value="1" selected>Report Request Input Form</option>
+            <option value="2">Pending Review Input Form</option>
+            <option value="3">Assigned Input Form</option>
+            <option value="4">Pending Development Input Form</option>
+            <option value="5">Development Input Form</option>
+            <option value="6">Peer Review Input Form</option>
+            <option value="7">Business Review Input Form</option>
+            <option value="8">Update Status Input Form</option>
+            <option value="9">Request Review Input Form</option>
+            <option value="10">Add Note Input Form</option>
+            <option value="11">Add Level of Effort Input Form</option>
+            <option value="12">Add Developer Input Form</option>
+            <option value="13">Configuration Interface</option>
+          </select>
+
+          <!-- <h3>Report Request Input Form</h3> -->
+          <form id="reportRequest" class="form-view form-view-1">
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="ReportRequestItemTitle">Title</label>
+                <input
+                  required
+                  type="text"
+                  class="form-control"
+                  name="ReportRequestItemTitle"
+                  id="ReportRequestItemTitle"
+                  placeholder="Type Title Here...">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="ReportRequestItemRequestor">Requestor</label>
+                <input
+                  required
+                  type="text"
+                  class="form-control"
+                  name="ReportRequestItemRequestor"
+                  id="ReportRequestItemRequestor"
+                  placeholder="John Doe">
+              </div>
+              <div class="col">
+                <label class="formLabel" for="ReportRequestItemDepartment">Department</label>
+                <input
+                  required
+                  type="text"
+                  class="form-control"
+                  name="ReportRequestItemDepartment"
+                  id="ReportRequestItemDepartment"
+                  placeholder="Type Department Here...">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="ReportRequestItemPriority">Priority</label>
+                <select
+                  name="ReportRequestItemPriority"
+                  class="form-control"
+                  id="ReportRequestItemPriority">
+                  <option value="High">High</option>
+                  <option value="Standard">Standard</option>
+                  <option value="Low">Low</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="ReportRequestItemPurpose">Business Need</label>
+                <input
+                  required
+                  type="text"
+                  class="form-control"
+                  name="ReportRequestItemPurpose"
+                  id="ReportRequestItemPurpose"
+                  placeholder="Type Purpose Here...">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="ReportRequestItemType">Type</label>
+                <select
+                  name="ReportRequestItemType"
+                  class="form-control"
+                  id="ReportRequestItemType">
+                  <option value="Analysis">Analysis</option>
+                  <option value="On Demand Report">On Demand Report</option>
+                  <option value="Scheduled Report">Scheduled Report</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="ReportRequestItemDescription">Description and Requirements</label>
+                <input
+                  required
+                  type="text"
+                  class="form-control"
+                  name="ReportRequestItemDescription"
+                  id="ReportRequestItemDescription"
+                  placeholder="Describe...">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Report Request</button>
+          </form>
+
+          <!-- <h3>Pending Review Input Form</h3> -->
+          <form id="pendingReviewRequest" class="form-view form-view-2">
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="PendingReviewRequestItemID">Item ID</label>
+                <input
+                  required
+                  type="number"
+                  min="0"
+                  class="form-control"
+                  name="PendingReviewRequestItemID"
+                  id="PendingReviewRequestItemID"
+                  placeholder="Type Relevant Item ID Here...">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="PendingReviewRequestItemStatus">New Status</label>
+                <select
+                  name="PendingReviewRequestItemStatus"
+                  class="form-control"
+                  id="PendingReviewRequestItemStatus">
+                  <option value="Request Reviewed">Request Reviewed</option>
+                  <option value="Closed">Closed</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Pending Review Request</button>
+          </form>
+
+          <!-- <h3>Assigned Input Form</h3> -->
+          <form id="assignedInputRequest" class="form-view form-view-3">
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="assignedInputRequestID">Item ID</label>
+                <input
+                 required
+                 type="number"
+                 min="0"
+                 class="form-control"
+                 id="assignedInputRequestID"
+                 name="assignedInputRequestID">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="assignedInputRequestAssignee">Assignee ID</label>
+                <input
+                required
+                type="text"
+                class="form-control"
+                id="assignedInputRequestAssignee"
+                name="assignedInputRequestAssignee"
+                placeholder="Assignee Name (30 Char Max)"
+                maxlength="30">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="assignedInputRequestAssigner">Assigner ID</label>
+                <input
+                type="text"
+                required
+                class="form-control"
+                id="assignedInputRequestAssigner"
+                name="assignedInputRequestAssigner"
+                placeholder="Assigner ID"
+                maxlength="30">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Assign Request</button>
+          </form>
+
+          <!-- <h3 style="color:blue;">Pending Development Input Form </h3> -->
+          <form id="pendingDevelopmentInputRequest" class="form-view form-view-4">
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="PendingDevelopmentItemID">Item ID</label>
+                <input
+                  required
+                  type="number"
+                  min="0"
+                  class="form-control"
+                  name="PendingDevelopmentItemID"
+                  id="PendingDevelopmentItemID"
+                  placeholder="Type Relevant Item ID Here...">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="PendingDevelopmentItemStatus">New Status</label>
+                <select
+                  name="PendingDevelopmentItemStatus"
+                  class="form-control"
+                  id="PendingDevelopmentItemStatus">
+                  <option value="On Hold">On Hold</option>
+                  <option value="Development">Development</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Pending Development Request</button>
+          </form>
+
+       <!-- <h3 style="color:blue;">Development Input Form </h3> -->
+          <form id="DevelopmentInputRequest" class="form-view form-view-5">
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="DevelopmentRequestItemID">Item ID</label>
+                <input
+                  required
+                  type="number"
+                  min="0"
+                  class="form-control"
+                  name="PendingReviewRequestItemID"
+                  id="PendingReviewRequestItemID"
+                  placeholder="Type Relevant Item ID Here...">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="DevelopmentRequestItemStatus">New Status</label>
+                <select
+                  name="PendingReviewRequestItemStatus"
+                  class="form-control"
+                  id="PendingReviewRequestItemStatus">
+                  <option value="Peer Review">Peer Review</option>
+                  <option value="On Hold">On Hold</option>
+                  <option value="Closed">Closed</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Development Form</button>
+          </form>
+
+          <!-- <h3>Peer Review Input Form</h3> -->
+          <form id="peerReviewRequest" class="form-view form-view-6">
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="peerReviewRequestID">Item ID</label>
+                <input
+                required
+                min="0"
+                type="number"
+                class="form-control"
+                id="peerReviewRequestID"
+                name="peerReviewRequestID">
+              </div>
+            </div>
+
+              <div class="row">
+              <div class="col">
+                <label class="formLabel" for="peerReviewApproval">Approval</label>
+                <select required class="form-control" id="peerReviewApproval" name="peerReviewApproval">
+                  <option>True</option>
+                  <option>False</option>
+                </select>
+              </div>
+            </div>
+
+              <div class="row">
+              <div class="col">
+                <label class="formLabel" for="PeerReviewApprovalText">Comment</label>
+                <input
+                required
+                type="text"
+                class="form-control"
+                placeholder="Write your comment here..."
+                id="PeerReviewApprovalText"
+                name="PeerReviewApprovalText">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="PeerReviewApprovalReview">Reviewer ID</label>
+                <input
+                required
+                type="text"
+                maxlength="30"
+                id="PeerReviewApprovalReview"
+                name="PeerReviewApprovalReview"
+                class="form-control"
+                placeholder="Reviewer (30 Char Max)">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Peer Review</button>
+          </form>
+
+          <!-- <h3>Business Review Input Form</h3> -->
+          <form id="businessReviewRequest" class="form-view form-view-7">
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="businessReviewRequestID">Item ID</label>
+                <input
+                required
+                min="0"
+                type="number"
+                class="form-control"
+                id="businessReviewRequestID"
+                name="businessReviewRequestID">
+              </div>
+            </div>
+
+              <div class="row">
+              <div class="col">
+                <label class="formLabel" for="businessReviewApproval">Approval</label>
+                <select required class="form-control" id="businessReviewApproval" name="businessReviewApproval">
+                  <option>True</option>
+                  <option>False</option>
+                </select>
+              </div>
+            </div>
+
+              <div class="row">
+              <div class="col">
+                <label class="formLabel" for="businessReviewApprovalText">Comment</label>
+                <input
+                required
+                type="text"
+                class="form-control"
+                placeholder="Write your comment here..."
+                id="businessReviewApprovalText"
+                name="businessReviewApprovalText">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="businessReviewApprovalReview">Reviewer ID</label>
+                <input
+                required
+                type="text"
+                maxlength="60"
+                id="businessReviewApprovalReview"
+                name="businessReviewApprovalReview"
+                class="form-control"
+                placeholder="Reviewer (60 Char Max)">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Business Review</button>
+          </form>
+
+          <!-- <h3>Update Status Input Form</h3> -->
+          <form id="updateStatusRequest" class="form-view form-view-8">
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="updateStatusID">Item ID</label>
+                <input
+                required
+                min="0"
+                type="number"
+                class="form-control"
+                id="updateStatusID"
+                name="updateStatusID">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="updateStatusNewStatus">New Status</label>
+                <select
+                  name="updateStatusNewStatus"
+                  class="form-control"
+                  id="updateStatusNewStatus">
+
+                  <option value="Assigned">Assigned</option>
+                  <option value="Business Review">Business Review</option>
+                  <option value="Closed">Closed</option>
+                  <option value="Complete">Complete</option>
+                  <option value="Development">Development</option>
+                  <option value="On Hold">On Hold</option>
+                  <option value="Peer Review">Peer Review</option>
+                  <option value="Pending Development">Pending Development</option>
+                  <option value="Pending Review">Pending Review</option>
+                  <option value="Request Reviewed">Request Reviewed</option>
+
+                </select>
+              </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Submit Status Update</button>
+          </form>
+
+
+          <!-- <h3>Request Review Input Form</h3> -->
+          <form id="requestReviewRequest" class="form-view form-view-9">
+            <div class="row">
+              <div class="col">
+                <label for="requestReviewRequestID">Item ID</label>
+                <input required type="number" class="form-control" name="requestReviewRequestID" id="requestReviewRequestID" placeholder="item id">
+              </div>
+            </div>
+
+              <div class="row">
+              <div class="col">
+                <label for="requestReviewApprovalBit">Approval Bit</label>
+                <select required class="form-control" id="requestReviewApprovalBit" name="requestReviewApprovalBit" >
+                  <option>True</option>
+                  <option>False</option>
+                </select>
+              </div>
+            </div>
+
+              <div class="row">
+              <div class="col">
+                <label for="requestReviewApprovalText">Comment</label>
+                <input required type="text" class="form-control" placeholder="Comment" name="requestReviewApprovalText" id="requestReviewApprovalText">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label for="requestReviewApprovalReviewer">Reviewer ID (30 max char)</label>
+                <input required type="text" maxlength="30" name="requestReviewApprovalReviewer" id="requestReviewApprovalReviewer" class="form-control" placeholder="Reviewer (30 Char Max)">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Request Review Input Form</button>
+          </form>
+
+
+          <!-- <h3>Add Note Input Form</h3> -->
+          <form id="addNoteRequest" class="form-view form-view-10">
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="addNoteRequestID">Item ID</label>
+                <input
+                required
+                type="number"
+                min="0"
+                class="form-control"
+                name="addNoteRequestID"
+                id="addNoteRequest"
+                placeholder="Item id">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="addNoteText">Note Text</label>
+                <input
+                required
+                type="text"
+                id="addNoteText"
+                name="addNoteText"
+                class="form-control"
+                placeholder="Comment here...">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Note Request</button>
+          </form>
+
+
+          <!-- <h3>Add Level Of Effort Input Form</h3> -->
+          <form id="addEffortRequest" class="form-view form-view-11">
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="addEffortRequestID">Item ID</label>
+                <input
+                 required
+                 type="number"
+                 min="0"
+                 class="form-control"
+                 name="addEffortRequestID"
+                 id="addEffortRequestID">
+              </div>
+            </div>
+
+           <div class="row">
+              <div class="col">
+                <label class="formLabel" for="addEffortRequestEstimate">Estimate (Hours)</label>
+                <input
+                 required
+                 type="number"
+                 min="0"
+                 class="form-control"
+                 name="addEffortRequestEstimate"
+                 id="addEffortRequestEstimate">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="addEffortRequestDeveloper">Developer</label>
+                <input
+                  required
+                  type="text"
+                  id="addEffortRequestDeveloper"
+                  class="form-control"
+                  name="addEffortRequestDeveloper"
+                  placeholder="Reviewer (30 Char Max)"
+                  maxlength="30">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Level of Effort Request</button>
+          </form>
+
+
+          <!-- <h3>Add Developer Input Form</h3> -->
+          <form id="addDeveloperRequest" class="form-view form-view-12">
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="addDeveloperRequestName">Developer Name</label>
+                <input
+                required
+                type="text"
+                id="addDeveloperRequestName"
+                name="addDeveloperRequestName"
+                class="form-control"
+                placeholder="Name (128 Char Max)">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="addDeveloperRequestID">Developer ID (Assign them an ID)</label>
+                <input
+                required
+                type="number"
+                min="0"
+                id="addDeveloperRequestID"
+                name="addDeveloperRequestID"
+                class="form-control">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="addDeveloperRequestManagerName">Manager Name</label>
+                <input
+                required
+                type="text"
+                id="addDeveloperRequestManagerName"
+                name="addDeveloperRequestManagerName"
+                class="form-control"
+                placeholder="Manager Name (100 Char Max)">
+              </div>
+            </div>
+
+           <button type="submit" class="btn btn-primary">Submit New Developer</button>
+          </form>
+
+          <!-- <h3>Configuration Interface</h3> -->
+          <form id="configuration" class="form-view form-view-13">
+
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="configurationUsername">DB Username</label>
+                <input
+                type="text"
+                class="form-control"
+                id="configurationUsername"
+                name="configurationUsername">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="configurationPassword">DB Password</label>
+                <input
+                type="text"
+                class="form-control"
+                id="configurationPassword"
+                name="configurationPassword">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="configurationServer">Server</label>
+                <input
+                type="text"
+                class="form-control"
+                id="configurationServer"
+                name="configurationServer">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="configurationInstanceName">Instance Name</label>
+                <input
+                type="text"
+                class="form-control"
+                id="configurationInstanceName"
+                name="configurationInstanceName">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label class="formLabel" for="configurationDatabase">Database</label>
+                <input
+                type="text"
+                class="form-control"
+                id="configurationDatabase"
+                name="configurationDatabase">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update Database Configuration</button>
+          </form>
+        </form>
+      </div>
+    </div>
+  </div>
+  </body>
+
+    <!-- Custom JS -->
+    <script src="./javascripts/formsubmission.js"></script>
+</html>
